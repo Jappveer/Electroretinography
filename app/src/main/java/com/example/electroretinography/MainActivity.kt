@@ -22,7 +22,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize().statusBarsPadding(),
                     containerColor = Color.Transparent
                 ) { innerPadding: PaddingValues ->
-                    // Pass the innerPadding to HomeScreen as a Modifier
                     HomeScreen(Modifier.padding(innerPadding))
                 }
             }
