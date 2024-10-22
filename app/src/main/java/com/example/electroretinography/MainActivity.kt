@@ -12,7 +12,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import com.example.electroretinography.ui.theme.ElectroretinographyTheme
-
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +23,7 @@ class MainActivity : ComponentActivity() {
                     containerColor = Color.Transparent
                 ) { innerPadding: PaddingValues ->
                     // Pass the innerPadding to HomeScreen as a Modifier
-                    HomeScreen(Modifier.padding(innerPadding))  // Correctly pass the Modifier
+                    HomeScreen(Modifier.padding(innerPadding))
                 }
             }
         }
