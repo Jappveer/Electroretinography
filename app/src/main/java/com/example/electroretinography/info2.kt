@@ -1,14 +1,20 @@
 package com.example.electroretinography
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.foundation.background
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.tooling.preview.Preview
 
 @Composable
 fun Info2(onNavigateToSignalTest: () -> Unit) {
@@ -39,9 +45,18 @@ fun Info2(onNavigateToSignalTest: () -> Unit) {
         }
     }
 }
-
 @Composable
-fun SignalTestScreen() {
+fun SignalTestScreen(onFileSelected: (Uri) -> Unit) {
+    val context = LocalContext.current
+
+    // Launcher for file picker
+    val filePickerLauncher = rememberLauncherForActivityResult(
+        contract = ActivityResultContracts.GetContent(),
+        onResult = { uri: Uri? ->
+            uri?.let { onFileSelected(it) }
+        }
+    )
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -62,8 +77,9 @@ fun SignalTestScreen() {
             color = Color.Black
         )
         Spacer(modifier = Modifier.height(16.dp))
-        // Placeholder for file upload input
-        Button(onClick = { /* Implement file upload logic */ }) {
+
+        // Button to open file picker with the correct MIME type for CSV
+        Button(onClick = { filePickerLauncher.launch("text/*") }) {
             Text("Upload CSV File")
         }
     }
@@ -71,12 +87,12 @@ fun SignalTestScreen() {
 
 @Preview(showBackground = true)
 @Composable
-fun Info2Preview() {
-    Info2(onNavigateToSignalTest = {})
+fun SignalTestScreenPreview() {
+    SignalTestScreen(onFileSelected = {})
 }
 
 @Preview(showBackground = true)
 @Composable
-fun SignalTestScreenPreview() {
-    SignalTestScreen()
+fun Info2Preview() {
+    Info2(onNavigateToSignalTest = {})
 }
