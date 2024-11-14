@@ -1,0 +1,18 @@
+<!-- res/drawable/custom_shadow.xml -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Darker shadow layer with increased padding -->
+    <item android:left="8dp" android:right="8dp" android:top="8dp" android:bottom="8dp">
+        <shape android:shape="rectangle">
+            <solid android:color="#AA000000" /> <!-- Darker grey shadow color with higher opacity -->
+            <corners android:radius="8dp" />     <!-- Match the corner radius of your view -->
+        </shape>
+    </item>
+
+    <!-- Main content background -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#FFFFFF" />    <!-- Main background color -->
+            <corners android:radius="8dp" />     <!-- Match the corner radius of your view -->
+        </shape>
+    </item>
+</layer-list>
