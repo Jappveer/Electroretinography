@@ -11,9 +11,10 @@
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Upload CSV File"
+        android:text="Upload Patient Data"
         android:textSize="20sp"
         android:layout_marginBottom="32dp"
+        android:textColor="@color/black"
         android:gravity="center" />
 
     <!-- Upload Button -->
@@ -24,13 +25,31 @@
         android:text="Choose CSV File"
         android:layout_marginBottom="16dp"/>
 
-    <!-- File Path TextView -->
-    <TextView
-        android:id="@+id/file_path_text"
+    <!-- Download Result Button -->
+    <Button
+        android:id="@+id/download_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="No file selected"
-        android:textSize="16sp"
-        android:gravity="center" />
+        android:text="Download Results"
+        android:layout_marginTop="16dp"
+        android:visibility="gone"/> <!-- Initially hidden until upload is complete -->
 
+    <!-- Disorder and Confidence Results -->
+    <TextView
+        android:id="@+id/disorder_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Predicted Disorder: N/A"
+        android:textSize="18sp"
+        android:layout_marginTop="32dp"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:id="@+id/confidence_result"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Confidence: N/A"
+        android:textSize="18sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/black" />
 </LinearLayout>
